@@ -28,7 +28,7 @@ int main() {
     cudaMemcpy(&res, d_a, sizeof(int), cudaMemcpyDeviceToHost);
 
     // Print the result
-    cout<<"The result is "<< a <<endl;
+    cout<<"The result is "<< res <<endl;
 
     // Clear the GPU memory
     cudaFree(d_a);
