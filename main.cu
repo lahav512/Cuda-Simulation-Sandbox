@@ -13,8 +13,8 @@ int main() {
     // int res;
     int *d_a, *d_b;
 
-    d_a[0] = a;
-    d_b[0] = b;
+    *d_a = a;
+    *d_b = b;
 
     // Allocate memory for the kernel function in the GPU
     cudaMallocManaged(&d_a, sizeof(int));
