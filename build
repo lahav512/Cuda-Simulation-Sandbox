@@ -1,0 +1,1 @@
+g++ -o main.out -g main.cpp
