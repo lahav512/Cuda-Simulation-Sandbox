@@ -3,7 +3,7 @@
 #include <cuda.h>
  
 // CUDA kernel to add elements of two arrays
-__global__ void add(int n, float *x, float *y)
+__global__ void add(int n, float *x, float *y) {
     for (int i = index; i < n; i += 1) {
         y[i] += x[i];
     }
