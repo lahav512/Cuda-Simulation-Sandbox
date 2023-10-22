@@ -5,6 +5,7 @@
 // CUDA kernel to add elements of two arrays
 __global__ void AplusB(int *res, int a, int b) {
     res[threadIdx.x] = a + b + threadIdx.x;
+    printf("GPU: %d: A+B = %d\n", threadIdx.x, res[threadIdx.x]);
 }
  
 int main(void)
@@ -21,10 +22,10 @@ int main(void)
     // Wait until GPU completes calculations
     cudaDeviceSynchronize();
 
-    // Print result
-    for(int i = 0; i < N; i++) {
-        printf("%d: A+B = %d\n", i, res[i]);
-    }
+    // // Print result
+    // for(int i = 0; i < N; i++) {
+    //     printf("CPU: %d: A+B = %d\n", i, res[i]);
+    // }
 
     // Clear memory
     cudaFree(res);
