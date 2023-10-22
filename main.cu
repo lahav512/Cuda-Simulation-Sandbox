@@ -18,6 +18,10 @@ int main(void)
 
     // Execute kernel function
     AplusB<<< 1, N >>>(res, 10, 100);
+    cudaError_t err = cudaPeekAtLastError();
+    if (err != cudaSuccess) {
+        printf("Error: %s\n", cudaGetErrorString(err));
+    }
 
     // Wait until GPU completes calculations
     cudaDeviceSynchronize();
