@@ -4,7 +4,7 @@
 using namespace std;
 
 __global__ void addIntsCUDA(int *a, int *b) {
-    *a += *b;
+    a[0] += b[0];
 }
 
 int main() {
@@ -22,13 +22,13 @@ int main() {
     cudaMemcpy(d_b, &b, sizeof(int), cudaMemcpyHostToDevice);
 
     // Execute the kernel function
-    addIntsCUDA<<<1,1>>>(d_a, d_b);
+    addIntsCUDA<<<1, 1>>>(d_a, d_b);
 
     // Copy the result from the GPU to the CPU
-    cudaMemcpy(&res, d_a, sizeof(int), cudaMemcpyDeviceToHost);
+    cudaMemcpy(&a, d_a, sizeof(int), cudaMemcpyDeviceToHost);
 
     // Print the result
-    cout<<"The result is "<< res <<endl;
+    cout<<"The result is "<< a <<endl;
 
     // Clear the GPU memory
     cudaFree(d_a);
