@@ -22,7 +22,7 @@ int main() {
     cudaMemcpy(d_b, &b, sizeof(int), cudaMemcpyHostToDevice);
 
     // Execute the kernel function
-    addIntsCUDA(d_a, d_b);
+    addIntsCUDA<<<1,1>>>(d_a, d_b);
 
     // Copy the result from the GPU to the CPU
     cudaMemcpy(&res, d_a, sizeof(int), cudaMemcpyDeviceToHost);
