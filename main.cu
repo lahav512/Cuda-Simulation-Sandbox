@@ -14,18 +14,25 @@ int main() {
     int *d_a, *d_b;
 
     // Allocate memory for the kernel function in the GPU
-    cudaMalloc(&d_a, sizeof(int));
-    cudaMalloc(&d_b, sizeof(int));
+    cudaMallocManaged(&d_a, sizeof(int));
+    cudaMallocManaged(&d_b, sizeof(int));
 
-    // Copy the memory from the CPU to the GPU
-    cudaMemcpy(d_a, &a, sizeof(int), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_b, &b, sizeof(int), cudaMemcpyHostToDevice);
+    // // Allocate memory for the kernel function in the GPU
+    // cudaMalloc(&d_a, sizeof(int));
+    // cudaMalloc(&d_b, sizeof(int));
+
+    // // Copy the memory from the CPU to the GPU
+    // cudaMemcpy(d_a, &a, sizeof(int), cudaMemcpyHostToDevice);
+    // cudaMemcpy(d_b, &b, sizeof(int), cudaMemcpyHostToDevice);
 
     // Execute the kernel function
     addIntsCUDA<<<1, 1>>>(d_a, d_b);
 
-    // Copy the result from the GPU to the CPU
-    cudaMemcpy(&a, d_a, sizeof(int), cudaMemcpyDeviceToHost);
+    // // Copy the result from the GPU to the CPU
+    // cudaMemcpy(&a, d_a, sizeof(int), cudaMemcpyDeviceToHost);
+
+    // Wait for GPU to finish before accessing on host
+    cudaDeviceSynchronize();
 
     // Print the result
     cout<<"The result is "<< a <<endl;
