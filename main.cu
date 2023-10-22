@@ -32,7 +32,7 @@ int main(void)
 
     // Print result
     for (int i = 0; i < N; i++) {
-        std::cout << "Max error: " << y << std::endl;
+        std::cout << "x + y = " << y[i] << std::endl;
     }
 
     // Free memory
