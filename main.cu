@@ -4,7 +4,7 @@
 using namespace std;
 
 __global__ void addIntsCUDA(int *a, int *b) {
-    a[0] += b[0];
+    *a += *b;
 }
 
 int main() {
