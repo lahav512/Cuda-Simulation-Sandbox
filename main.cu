@@ -10,8 +10,11 @@ __global__ void addIntsCUDA(int *a, int *b) {
 int main() {
     int a = 5;
     int b = 9;
-    int res;
+    // int res;
     int *d_a, *d_b;
+
+    d_a[0] = a;
+    d_b[0] = b;
 
     // Allocate memory for the kernel function in the GPU
     cudaMallocManaged(&d_a, sizeof(int));
