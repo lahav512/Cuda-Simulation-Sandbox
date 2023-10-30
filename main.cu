@@ -10,12 +10,12 @@ __global__ void AplusB(int *res, int a, int b) {
  
 int main(void)
 {
-    int N = 1000;
+    int N = 10000;
     int *res;
     int *x, *y;
 
     // Allocate memory
-    cudaMallocManaged(&res, 1000 * sizeof(int));
+    cudaMallocManaged(&res, N * sizeof(int));
 
     // Execute kernel function
     AplusB<<< 1, N >>>(res, 10, 100);
