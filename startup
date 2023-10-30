@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/sh
 clear
 echo "This is an example project for working with CUDA and NVIDIA GPU. It should be used for learning purposes and early experiments."
 echo ""
@@ -8,4 +8,4 @@ echo ""
 echo "The environment is ready."
 echo "Execute './run' to start the application."
 echo ""
-zsh -i -l
+zsh

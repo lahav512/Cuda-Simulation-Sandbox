@@ -1,2 +1,6 @@
 .vscode
-cuda-sandbox-image.tar.gz
+.DS_Store
+Data
+main.out.dSYM
+*.tar
+*.gz

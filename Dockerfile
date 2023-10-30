@@ -1,35 +1,29 @@
 # Set base image 
-FROM  ubuntu:latest
+FROM cuda-projects:latest as base
+
+# FROM ubuntu:latest
 WORKDIR /app
 COPY . .
+# SHELL ["/bin/sh", "-c"]
+
+# Update repositories
+# RUN apt-get update
+FROM base
 
 # Install required packages and Zsh
-RUN apt-get update && \
-    apt-get install -y zsh git wget curl
+# RUN apt-get update -y
 
 # Install Oh-My-Zsh
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-RUN echo 'PROMPT="%d $ "' >> ~/.zshrc
-RUN zsh -c 'source ~/.zshrc'
+#     apt-get install -y zsh curl git
+# RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+# SHELL ["/bin/zsh", "-c"]
 
 # other instructions
 
 # Install dependencies
 
-# Install required packages
-# RUN pip install --no-cache-dir -r requirements.txt
-
-
-# Install CUDA toolkit (nvcc)
-
-# Set aliases
-RUN echo "alias cls=clear" >> ~/.zshrc
-RUN zsh -c 'source ~/.zshrc'
-
 # Add permissions for executables
-RUN chmod +x build
-RUN chmod +x run
-RUN chmod +x startup
+RUN chmod +x build run startup
 
 # Set startup script
 CMD ["./startup"]
