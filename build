@@ -1,2 +1,2 @@
 #!/bin/sh
-nvcc main.cu -o main
+nvcc main.cu -o main -lcublas -lcurand -arch=sm_75
